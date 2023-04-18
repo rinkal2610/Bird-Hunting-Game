@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bird Hunt Game</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            cursor: url(images/aim.png), text;
+            overflow: hidden;
+        }
+        body:before{
+            content: '';
+            display: block;
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            background: url(images/background.jpg) repeat-x bottom left;
+        }
+        @keyframes birdfly{
+            0%{
+                left: 150%;
+                top: 10%;
+            }
+            25%{
+                left: 80%;
+                top: 50%;
+            }
+            50%{
+                left: 50%;
+                top: 30%;
+            }
+            75%{
+                left: 40%;
+                top: 30%;
+            }
+            100%{
+                left: -50%;
+                top: 10%;
+            }
+        }
+        input + label{
+            position: absolute;
+            left: -100px;
+            z-index: 1;
+            width: 36px;
+            height: 34px;
+            display: block;
+            z-index: 5;
+            transform: translate(-50%, -50%);
+            background: url(images/duck_black.png) no-repeat left center;
+            background-position: -138px 0;
+        }
+        input:checked + label{
+            opacity: 0;
+            transition: 0.5s;
+            transform: rotate(120deg);
+            transform-origin:60%;
+            z-index: -5;
+        }
+        .bird:nth-last-of-type(1){
+            animation: birdfly 10s linear 1s infinite;
+            cursor: url(images/aim.png), text;
+        }
+        .bird:nth-last-of-type(2){
+            animation: birdfly 20s linear 2s infinite;
+            cursor: url(images/aim.png), text;
+        }
+        .bird:nth-last-of-type(3){
+            animation: birdfly 25s linear 4s infinite;
+            cursor: url(images/aim.png), text;
+        }
+        .bird:nth-last-of-type(4){
+            animation: birdfly 30s linear 6s infinite;
+            cursor: url(images/aim.png), text;
+        }
+        .bird:nth-last-of-type(5){
+            animation: birdfly 35s linear 8s infinite;
+            cursor: url(images/aim.png), text;
+        }
+        .score{
+            position: absolute;
+            bottom: 0;
+            height: 50px;
+            line-height: 50px;
+            background-color: #dadada;
+            width: 100%;
+            z-index: 2;
+            text-align: center;
+            font-size: 30px;
+        }
+        .score:after{
+            content: counter(score);
+            display: inline-block;
+        }
+        .score::before{
+            content: 'Score:';
+            display: inline-block;
+            margin-right: 10px;
+        }
+        input:checked{
+            counter-increment: score;
+        }
+        script{
+            text-align: center;
+            background-color: red;
+        }
+        
+
+
+    </style>
+</head>
+<body onclick="document.getElementById('sound1').play();">
+    <audio id="sound1" src="sound/gunsound.mp3" preload="auto"></audio>
+
+    <input type="checkbox" id="bird1">
+    <label for="bird1" class="bird"></label>
+
+    <input type="checkbox" id="bird2">
+    <label for="bird2" class="bird"></label>
+
+    <input type="checkbox" id="bird3">
+    <label for="bird3" class="bird"></label>
+
+    <input type="checkbox" id="bird4">
+    <label for="bird4" class="bird"></label>
+
+    <input type="checkbox" id="bird5">
+    <label for="bird5" class="bird"></label>
+
+    <div class="score"></div>
+
+    <div id="gameover">
+        <h2>Game Over</h2>
+    </div>
+    
+    
+</body>
+<script>
+   if(score==5){
+        <p>GAME OVER</p>
+    }
+</script>
+</html>
